@@ -20,17 +20,6 @@ $(document).ready(() => {
         };
     })
 
-$('input').text(localStorage.getItem('9AM'));
-$('input').val(localStorage.getItem('#10AM'));
-$('input').val(localStorage.getItem('#11AM'));
-$('input').val(localStorage.getItem('#12AM'));
-$('input').val(localStorage.getItem('#13PM'));
-$('input').val(localStorage.getItem('#14PM'));
-$('input').val(localStorage.getItem('#15PM'));
-$('input').val(localStorage.getItem('#16PM'));
-$('input').val(localStorage.getItem('#17PM'));
-$('input').val(localStorage.getItem('#18PM'));
-
 function currentDay() {
     $('#currentDay').text(moment().format('dddd MMMM Do, YYYY'));
     var currentTime = moment().hours();
@@ -46,6 +35,9 @@ function currentDay() {
         if (listHours === currentTime) {
             $(this).addClass('present')
         } 
+
+    $(this).val(localStorage.getItem('9AM'));
+    console.log(this);
     })
 };
 
