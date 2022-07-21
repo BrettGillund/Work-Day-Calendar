@@ -23,7 +23,7 @@ $(document).ready(() => {
     var hour = ($(event.currentTarget).siblings('label').attr('id'))
     // var hour = $(`label.hour`).attr('id');
     localStorage.setItem(hour, txt);
-        console.log(hour);
+        // console.log(hour);
 
 
         // console.log(localStorage.getItem(hour));
@@ -31,12 +31,6 @@ $(document).ready(() => {
             alert(`you have saved ${txt} at ${hour}`);
         };
     })
-
-function checkTime() {
-    //if check to check the current time versus the time associated with the time of the 
-    // select with jquery (ID or class) dynamically add a class to the sibilings.
-    // set intveral and set timeout.
-}
 
 $('.hour').val(localStorage.getItem('#9AM'));
 $('.hour').val(localStorage.getItem('#10AM'));
@@ -56,7 +50,17 @@ function currentDay() {
     var currentTime = moment().hours();
     $('.hour').each(function(){
         var listHours = parseInt($(this).attr('id').substr(0));
-        // console.log(listHours);
+        console.log(listHours);
+        console.log(currentTime)
+        if (listHours > currentTime) {
+            $('input').addClass('future')
+        }
+        if (listHours === currentTime) {
+            $('input').addClass('present')
+        }
+        if (listHours < currentTime) {
+            $('input').addClass('past')
+        }
     })
     // if (listHours)
 };
