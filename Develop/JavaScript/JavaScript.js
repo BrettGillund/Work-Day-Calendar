@@ -6,68 +6,58 @@ var past = new Date()
 var saveBtn = $('.saveBtn');
 var inputText = $('.textarea');
 
-// console.log(saveBtn);
-// console.log(inputText);
-
 
 
 $(document).ready(() => {
     $(saveBtn).on('click', (event) => {
         event.preventDefault();
-        // console.log(saveBtn);
-        var txt = ($(event.currentTarget).siblings('input').val())
-        // var txt = $('[type=text]').val();
-        // console.log($(event.currentTarget).siblings('input').val())
-        // console.log(event)
-        // console.log(inputText.value)
-    var hour = ($(event.currentTarget).siblings('label').attr('id'))
-    // var hour = $(`label.hour`).attr('id');
-    localStorage.setItem(hour, txt);
-        // console.log(hour);
+        const txt = ($(event.currentTarget).siblings('input').val())
+        const hour = ($(event.currentTarget).siblings('input').attr('id'))
+        localStorage.setItem(hour, txt);
 
-
-        // console.log(localStorage.getItem(hour));
         if (localStorage.getItem(hour)) {
             alert(`you have saved ${txt} at ${hour}`);
         };
     })
 
-$('.hour').val(localStorage.getItem('#9AM'));
-$('.hour').val(localStorage.getItem('#10AM'));
-$('.hour').val(localStorage.getItem('#11AM'));
-$('.hour').val(localStorage.getItem('#12AM'));
-$('.hour').val(localStorage.getItem('#13PM'));
-$('.hour').val(localStorage.getItem('#14PM'));
-$('.hour').val(localStorage.getItem('#15PM'));
-$('.hour').val(localStorage.getItem('#16PM'));
-$('.hour').val(localStorage.getItem('#17PM'));
-$('.hour').val(localStorage.getItem('#18PM'));
-
-});
+$('input').text(localStorage.getItem('9AM'));
+$('input').val(localStorage.getItem('#10AM'));
+$('input').val(localStorage.getItem('#11AM'));
+$('input').val(localStorage.getItem('#12AM'));
+$('input').val(localStorage.getItem('#13PM'));
+$('input').val(localStorage.getItem('#14PM'));
+$('input').val(localStorage.getItem('#15PM'));
+$('input').val(localStorage.getItem('#16PM'));
+$('input').val(localStorage.getItem('#17PM'));
+$('input').val(localStorage.getItem('#18PM'));
 
 function currentDay() {
     $('#currentDay').text(moment().format('dddd MMMM Do, YYYY'));
     var currentTime = moment().hours();
-    $('.hour').each(function(){
+    $('.desciption').each(function(){
         var listHours = parseInt($(this).attr('id').substr(0));
-        console.log(listHours);
-        console.log(currentTime)
+
         if (listHours > currentTime) {
-            $('input').addClass('future')
-        }
-        if (listHours === currentTime) {
-            $('input').addClass('present')
+            $(this).addClass('future')
         }
         if (listHours < currentTime) {
-            $('input').addClass('past')
+            $(this).addClass('past')
         }
+        if (listHours === currentTime) {
+            $(this).addClass('present')
+        } 
     })
-    // if (listHours)
 };
+
+currentDay();
+
+});
+
+
 
 // if else checks checking current hour with listHours. 
 
-currentDay();
+
 
 // create the layout of time in html.
 
