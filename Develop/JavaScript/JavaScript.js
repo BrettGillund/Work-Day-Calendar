@@ -18,7 +18,7 @@ $(document).ready(() => {
         if (localStorage.getItem(hour)) {
             alert(`you have saved ${txt} at ${hour}`);
         };
-    })
+    });
 
 function currentDay() {
     $('#currentDay').text(moment().format('dddd MMMM Do, YYYY'));
@@ -30,18 +30,31 @@ function currentDay() {
             $(this).addClass('future')
         }
         if (listHours < currentTime) {
+            $(this).removeClass('present')
             $(this).addClass('past')
         }
         if (listHours === currentTime) {
+            $(this).removeClass('past')
             $(this).addClass('present')
         } 
 
-    $(this).val(localStorage.getItem('9AM'));
-    console.log(this);
+    // $(this).val(localStorage.getItem('9AM'));
+    // console.log(this);
     })
-};
+    };
 
 currentDay();
+
+$('#9AM').val(localStorage.getItem('9AM'));
+$('#10AM').val(localStorage.getItem('10AM'));
+$('#11AM').val(localStorage.getItem('11AM'));
+$('#12PM').val(localStorage.getItem('12PM'));
+$('#13PM').val(localStorage.getItem('13PM'));
+$('#14PM').val(localStorage.getItem('14PM'));
+$('#15PM').val(localStorage.getItem('15PM'));
+$('#16PM').val(localStorage.getItem('16PM'));
+$('#17PM').val(localStorage.getItem('17PM'));
+$('#18PM').val(localStorage.getItem('18PM'));
 
 });
 
