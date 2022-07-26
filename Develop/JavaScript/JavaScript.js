@@ -37,9 +37,6 @@ function currentDay() {
             $(this).removeClass('past')
             $(this).addClass('present')
         } 
-
-    // $(this).val(localStorage.getItem('9AM'));
-    // console.log(this);
     })
     };
 
